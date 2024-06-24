@@ -14,12 +14,12 @@ class UserService
     {
     }
 
+    /**
+     * @return Collection|User[]
+     */
     public function getAll(): Collection
     {
-         /** @var Collection|User[] $users */
-        $users = $this->userRepository->getAll();
-
-        return $users;
+        return $this->userRepository->getAll();
     }
 
     public function create(array $data): User
