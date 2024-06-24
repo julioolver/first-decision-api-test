@@ -51,13 +51,11 @@ class UserController extends Controller
             $this->service->update($id, $userRequest);
 
             return response()->json(['message' => 'User updated successfully'], Response::HTTP_OK);
-        } catch (\Throwable $th) {
-            return response()->json(['message' => $th->getMessage()], 500);
+        } catch (UserNotFoundException $e) {
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_NOT_FOUND);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
-        } catch (\Error $e) {
-            return response()->json(['message' => $e->getMessage()], 500);
-        }
+        } 
     }
 
     public function destroy(int $id)
