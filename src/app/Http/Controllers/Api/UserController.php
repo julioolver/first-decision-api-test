@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exceptions\UserNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Resources\UserResource;
@@ -44,6 +45,19 @@ class UserController extends Controller
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         } catch (\Error $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
+
+    public function destroy(int $id)
+    {
+        try {
+            $this->service->delete($id);
+
+            return response()->json(['message' => 'User deleted successfully'], Response::HTTP_NO_CONTENT);
+        } catch (UserNotFoundException $e) {
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_NOT_FOUND);
+        } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }
     }
