@@ -108,7 +108,7 @@ class UserController extends Controller
      *         )
      *     ),
      *     @OA\Response(
-     *         response=201,
+     *         response=200,
      *         description="Retorna o user criado",
      *         @OA\JsonContent(ref="#/components/schemas/userObject"),
      *     )
