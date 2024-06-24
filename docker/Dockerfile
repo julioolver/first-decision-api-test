@@ -20,6 +20,10 @@ RUN if [ -f composer.json ]; then composer install --no-dev --optimize-autoloade
 # Estágio 2: Imagem final
 FROM php:8.3-fpm-alpine
 
+# Criar usuário e grupo www
+RUN addgroup -g 1000 www \
+    && adduser -G www -u 1000 -D www
+
 WORKDIR /var/www
 
 # Instalar extensões necessárias
@@ -35,6 +39,7 @@ COPY ./docker/entrypoint.sh /entrypoint.sh
 
 RUN if [ ! -d /var/www/storage ]; then mkdir -p /var/www/storage; fi \
     && chown -R www-data:www-data /var/www \
+    && chown -R www:www /var/www \
     && chmod -R 775 /var/www/storage \
     && chmod +x /entrypoint.sh
 # Expor a porta 9000

@@ -22,11 +22,13 @@ php artisan migrate
 # Ajusta permissões para diretórios de cache e logs
 echo "Adjusting permissions for storage and bootstrap/cache"
 chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+chown -R www:www /var/www/storage /var/www/bootstrap/cache
 chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
 # Ajusta permissões para todo o diretório do projeto para que o usuário host possa editar os arquivos
 echo "Adjusting permissions for /var/www to be editable by host user"
 chown -R www-data:www-data /var/www
+chown -R www:www /var/www
 chmod -R 777 /var/www
 
 # Executa o comando original (php-fpm)

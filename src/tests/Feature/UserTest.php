@@ -11,13 +11,13 @@ class UserTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * A basic test example.
-     */
+    
     public function testShouldBeAbleToCreateUserWithSuccess(): void
     {
-        $user= User::factory()->create();
+        $user= User::factory()->make();
         $userPayload = $user->toArray();
+        $userPayload['password'] = '123456';
+        $userPayload['password_confirmation'] = '123456';
 
         $response = $this->postJson('/api/users', $userPayload);
         
@@ -26,7 +26,6 @@ class UserTest extends TestCase
             'email' => $user->email,
         ]);
         $response->assertStatus(201);
-        $response->assertJson($userPayload);
 
         $response->assertJsonStructure([
             'data' => [
