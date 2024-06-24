@@ -3,11 +3,12 @@
 namespace App\Services;
 
 use App\Models\User;
+use App\Repositories\Contracts\UserRepositoryContract;
 use App\Repositories\Eloquent\UserRepository;
 
 class UserService
 {
-    public function __construct(protected UserRepository $userRepository)
+    public function __construct(protected UserRepositoryContract $userRepository)
     {
     }
 

@@ -3,8 +3,9 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\User;
+use App\Repositories\Contracts\UserRepositoryContract;
 
-class UserRepository
+class UserRepository implements UserRepositoryContract
 {
     public function __construct(protected User $model)
     {
