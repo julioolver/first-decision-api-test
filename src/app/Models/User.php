@@ -17,6 +17,34 @@ use Illuminate\Notifications\Notifiable;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property Collection|User[] $users
+ * 
+ * @OA\Schema(
+ *     schema="userBase",
+ *     type="object",
+ *     @OA\Property(property="id", type="integer", example=1),
+ *     @OA\Property(property="name", type="string", example="John Doe"),
+ *     @OA\Property(property="email", type="string", example="john.doe@example.com"),
+ *     @OA\Property(property="password", type="string", example="123456"),
+ *     @OA\Property(property="password_confirmation", type="string", example="123456"),
+ * )
+ * @OA\Schema(
+ *    schema="userObject",
+ *    type="object",
+ *    @OA\Property(
+ *        property="data",
+ *        ref="#/components/schemas/userBase"
+ *    )
+ * )
+ *
+ * @OA\Schema(
+ *    schema="userArray",
+ *    type="object",
+ *    @OA\Property(
+ *        property="data",
+ *        type="array",
+ *        @OA\Items(ref="#/components/schemas/userBase")
+ *    )
+ * )
  */
 class User extends Authenticatable
 {
