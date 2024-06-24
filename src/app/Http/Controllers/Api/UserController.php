@@ -18,8 +18,6 @@ class UserController extends Controller
     {
         try {
             $userRequest = $request->all();
-            $userRequest['password'] = bcrypt($request['password']);
-
             $user = $this->service->create($userRequest);
 
             return (new UserResource($user))
