@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class CreateUserRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +24,8 @@ class CreateUserRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'min:3', 'max:50'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'max:20', 'confirmed'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($this->id)],
+            'password' => ['string', 'min:6', 'max:20', 'confirmed'],
         ];
     }
 
@@ -36,7 +37,6 @@ class CreateUserRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'password.required' => 'O campo Senha (password) é obrigatório',
             'password_confirmation.required' => 'O campo Confirmação de Senha (password_confirmation) é obrigatório',
             'name.required' => 'O campo Nome (name) é obrigatório',
             'email.required' => 'O campo E-mail (email) é obrigatório',

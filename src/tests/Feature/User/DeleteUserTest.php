@@ -11,7 +11,6 @@ class DeleteUserTest extends TestCase
 {
     use RefreshDatabase;
 
-    
     public function testShouldBeAbleToDeleteUserWithSuccess(): void
     {
         $user = User::factory()->create();

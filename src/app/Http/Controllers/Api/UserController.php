@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Exceptions\UserNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Services\UserService;
 use Illuminate\Http\Response;
@@ -44,7 +45,7 @@ class UserController extends Controller
         }
     }
 
-    public function update(int $id, CreateUserRequest $request)
+    public function update(int $id, UpdateUserRequest $request)
     {
         try {
             $userRequest = $request->all();
