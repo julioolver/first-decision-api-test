@@ -11,4 +11,17 @@ interface UserRepositoryContract
      * @return User
      */
     public function create(array $data): User;
+
+    /**
+     * @param User $user
+     * @param array $data
+     * @return bool
+     */
+    public function update(User $user, array $data): bool;
+
+    /**
+     * @param int $id
+     * @return ?User
+     */
+    public function findById(int $id): ?User;
 }

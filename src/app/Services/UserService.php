@@ -18,4 +18,15 @@ class UserService
 
         return $this->userRepository->create($data);
     }
+
+    public function update(int $id, array $data): bool
+    {
+        $user = $this->findById($id);
+        return $this->userRepository->update($user, $data);
+    }
+
+    public function findById(int $id): ?User
+    {
+        return $this->userRepository->findById($id);
+    }
 }

@@ -19,4 +19,23 @@ class UserRepository implements UserRepositoryContract
     {
         return $this->model->create($data);
     }
+
+    /**
+     * @param User $user
+     * @param array $data
+     * @return User
+     */
+    public function update(User $user, array $data): bool
+    {
+        return $user->update($data);
+    }
+
+    /**
+     * @param int $id
+     * @return ?User
+     */
+    public function findById(int $id): ?User
+    {
+        return $this->model->find($id);
+    }
 }

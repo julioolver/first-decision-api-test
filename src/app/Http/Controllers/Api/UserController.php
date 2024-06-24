@@ -21,8 +21,8 @@ class UserController extends Controller
             $user = $this->service->create($userRequest);
 
             return (new UserResource($user))
-            ->response()
-            ->setStatusCode(Response::HTTP_CREATED);
+                ->response()
+                ->setStatusCode(Response::HTTP_CREATED);
         } catch (\Throwable $th) {
             return response()->json(['message' => $th->getMessage()], 500);
         } catch (\Exception $e) {
@@ -32,8 +32,19 @@ class UserController extends Controller
         }
     }
 
-    public function update()
+    public function update(int $id, CreateUserRequest $request)
     {
-        return 'update';
+        try {
+            $userRequest = $request->all();
+            $this->service->update($id, $userRequest);
+
+            return response()->json(['message' => 'User updated successfully'], Response::HTTP_OK);
+        } catch (\Throwable $th) {
+            return response()->json(['message' => $th->getMessage()], 500);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        } catch (\Error $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
     }
 }
