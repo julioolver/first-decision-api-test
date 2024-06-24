@@ -4,11 +4,22 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\User;
 use App\Repositories\Contracts\UserRepositoryContract;
+use Illuminate\Database\Eloquent\Collection;
 
 class UserRepository implements UserRepositoryContract
 {
     public function __construct(protected User $model)
     {
+    }
+
+    /**
+     * Retorna todos os usuários.
+     *
+     * @return Collection|User[]
+     */
+    public function getAll(): Collection
+    {
+        return $this->model->all();
     }
 
     /**

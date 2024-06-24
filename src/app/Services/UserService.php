@@ -6,11 +6,20 @@ use App\Exceptions\UserNotFoundException;
 use App\Models\User;
 use App\Repositories\Contracts\UserRepositoryContract;
 use App\Repositories\Eloquent\UserRepository;
+use Illuminate\Database\Eloquent\Collection;
 
 class UserService
 {
     public function __construct(protected UserRepositoryContract $userRepository)
     {
+    }
+
+    public function getAll(): Collection
+    {
+         /** @var Collection|User[] $users */
+        $users = $this->userRepository->getAll();
+
+        return $users;
     }
 
     public function create(array $data): User
@@ -23,6 +32,11 @@ class UserService
     public function update(int $id, array $data): bool
     {
         $user = $this->findById($id);
+
+        if (array_key_exists('password', $data)) {
+            $user['password'] = app('hash')->make($user['password']);
+        }
+
         return $this->userRepository->update($user, $data);
     }
 

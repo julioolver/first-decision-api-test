@@ -15,6 +15,17 @@ class UserController extends Controller
     {
     }
 
+    public function index()
+    {
+        try {
+            $users = $this->service->getAll();
+
+            return UserResource::collection($users);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
+
     public function store(CreateUserRequest $request)
     {
         try {
