@@ -31,7 +31,7 @@ class UserService
 
     public function update(int $id, array $data): bool
     {
-        $user = $this->findById($id);
+        $user = $this->findOrFail($id);
 
         if (array_key_exists('password', $data)) {
             $data['password'] = app('hash')->make($user['password']);
@@ -45,13 +45,27 @@ class UserService
         return $this->userRepository->findById($id);
     }
 
-    public function delete(int $id): bool
+    /**
+     * Encontra um usuário por ID ou lança uma exceção
+     *
+     * @param int $id
+     * @return User
+     * @throws UserNotFoundException
+     */
+    protected function findOrFail(int $id): User
     {
         $user = $this->findById($id);
 
         if (!$user) {
             throw new UserNotFoundException();
         }
+
+        return $user;
+    }
+
+    public function delete(int $id): bool
+    {
+        $user = $this->findOrFail($id);
 
         return $this->userRepository->delete($user);
     }
