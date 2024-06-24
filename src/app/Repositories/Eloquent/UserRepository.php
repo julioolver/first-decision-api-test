@@ -38,4 +38,9 @@ class UserRepository implements UserRepositoryContract
     {
         return $this->model->find($id);
     }
+
+    public function delete(User $user): bool
+    {
+        return $user->delete();
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\UserNotFoundException;
 use App\Models\User;
 use App\Repositories\Contracts\UserRepositoryContract;
 use App\Repositories\Eloquent\UserRepository;
@@ -28,5 +29,16 @@ class UserService
     public function findById(int $id): ?User
     {
         return $this->userRepository->findById($id);
+    }
+
+    public function delete(int $id): bool
+    {
+        $user = $this->findById($id);
+
+        if (!$user) {
+            throw new UserNotFoundException();
+        }
+
+        return $this->userRepository->delete($user);
     }
 }

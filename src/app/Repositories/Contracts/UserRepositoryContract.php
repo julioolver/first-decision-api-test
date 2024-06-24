@@ -24,4 +24,10 @@ interface UserRepositoryContract
      * @return ?User
      */
     public function findById(int $id): ?User;
+
+    /**
+     * @param User $user
+     * @return bool
+     */
+    public function delete(User $user): bool;
 }
