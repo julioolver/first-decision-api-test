@@ -34,7 +34,7 @@ class UserService
         $user = $this->findById($id);
 
         if (array_key_exists('password', $data)) {
-            $user['password'] = app('hash')->make($user['password']);
+            $data['password'] = app('hash')->make($user['password']);
         }
 
         return $this->userRepository->update($user, $data);
