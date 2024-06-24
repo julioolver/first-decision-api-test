@@ -42,7 +42,7 @@ jobs:
     - name: Update .env with SQLite configuration
       working-directory: ./src
       run: |
-        echo -e "\nDB_CONNECTION=sqlite\nDB_DATABASE=/github/workspace/src/database/database.sqlite" >> .env
+        echo -e "\nDB_CONNECTION=sqlite\nDB_DATABASE=database/database.sqlite" >> .env
 
     - name: Run migrations
       working-directory: ./src
@@ -52,5 +52,5 @@ jobs:
       working-directory: ./src
       env:
         DB_CONNECTION: sqlite
-        DB_DATABASE: /github/workspace/src/database/database.sqlite
+        DB_DATABASE: database/database.sqlite
       run: php artisan test
