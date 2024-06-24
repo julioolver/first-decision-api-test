@@ -34,4 +34,24 @@ class UserTest extends TestCase
             ]
         ]);
     }
+
+
+    public function testShouldNotBeAbleToCreateUserWithoutName(): void
+    {
+        $userPayload = [
+            'email' => 'julio@julio.com',
+            'password' => '123456',
+            'password_confirmation' => '123456',
+        ];
+
+        $response = $this->postJson('/api/users', $userPayload);
+        $response->assertStatus(422);
+
+        $response->assertJsonStructure([
+            'message',
+            'errors' => [
+                'name',
+            ]
+        ]);
+    }
 }
