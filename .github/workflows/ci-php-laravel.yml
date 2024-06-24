@@ -1,4 +1,4 @@
-name: Laravel
+name: CI
 
 on:
   push:
@@ -38,10 +38,14 @@ jobs:
       run: |
         mkdir -p src/database
         touch src/database/database.sqlite
-    
+
+    - name: Update .env with SQLite configuration
+      run: |
+        echo -e "\nDB_CONNECTION=sqlite\nDB_DATABASE=/github/workspace/src/database/database.sqlite" >> src/.env
+
     - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
       env:
         DB_CONNECTION: sqlite
-        DB_DATABASE: src/database/database.sqlite
+        DB_DATABASE: /github/workspace/src/database/database.sqlite
       run: php artisan test
       working-directory: ./src
