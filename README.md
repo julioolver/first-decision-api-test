@@ -21,7 +21,7 @@ O projeto utiliza um padrão de design com Services e Repositories para abstrair
 
 ## Estrutura do Projeto
 
-O projeto se encontra dentro da pasta `Src`, foi feito desta maneira para sepagar o Docker (infra) da aplicação. Dentro do diretório App, o projeto inclui:
+O projeto se encontra dentro da pasta `src`, foi feito desta maneira para sepagar o Docker (infra) da aplicação. Dentro do diretório App, o projeto inclui:
 
 -   **Services**: Contém a lógica de negócios e as regras da aplicação.
 -   **Repositories**: Fornece uma camada de abstração sobre o acesso a dados, permitindo uma maneira mais flexível de interagir com o banco de dados. Também, existe no diretório os contracts (interfaces).
@@ -59,9 +59,12 @@ docker-compose up --build -d
 Caso seja necessário instalar as dependências novamente:
 
 ```
-docker exec laravel-app sh
+ docker exec -it laravel-app sh
 ```
 
+```
+ composer install
+```
 Após isso, o sistema se torna acessível via:
 
 `http://localhost:8088`
@@ -74,17 +77,21 @@ Acesse a seguinte URL para ter acesso a documentação:
 
 `http://localhost:8088/api/documentation/`
 
+![Swagger em funcionamento](swagger.png)
+
 ## Rodando os testes
 
 Para rodar os testes criados, basta executar:
 
 ```
-docker exec laravel-app sh
+ docker exec -it laravel-app sh
 ```
 
 ```
 php artisan test
 ```
+
+![Testes](test-phpunit.png)
 ## Front-end
 
 Por se tratar de uma API REST, o Front-end foi desenvolvido em outro repositório, separando a responsabilidade de ambos:
