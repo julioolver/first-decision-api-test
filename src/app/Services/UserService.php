@@ -33,11 +33,30 @@ class UserService
     {
         $user = $this->findOrFail($id);
 
-        if (array_key_exists('password', $data)) {
-            $data['password'] = app('hash')->make($user['password']);
+        if ($this->isPasswordChangeRequested($data)) {
+            $this->validateCurrentPassword($data['current_password'], $user->password);
+            
+            $data['password'] = app('hash')->make($data['password']);
+        } else {
+            unset($data['password']);
         }
 
+        unset($data['current_password'], $data['password_confirmation']);
+
         return $this->userRepository->update($user, $data);
+    }
+
+    private function isPasswordChangeRequested(array $data): bool
+    {
+        return isset($data['current_password'], $data['password']) &&
+            !empty($data['current_password']) && !empty($data['password']);
+    }
+
+    private function validateCurrentPassword(string $currentPassword, string $storedPassword): void
+    {
+        if (!app('hash')->check($currentPassword, $storedPassword)) {
+            throw new \Exception('Current password is incorrect');
+        }
     }
 
     public function findById(int $id): ?User
