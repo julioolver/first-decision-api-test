@@ -88,8 +88,8 @@ class UserController extends Controller
     /**
      * @OA\Put(
      *     path="/api/users/{id}",
-     *     summary="Cria um usuário no sistema",
-     *     description="Cria um usuário na base de dados do sistema",
+     *     summary="Edita um usuário no sistema",
+     *     description="Edita um usuário na base de dados do sistema",
      *     tags={"users"},
      *     @OA\Parameter(
      *         name="id",
