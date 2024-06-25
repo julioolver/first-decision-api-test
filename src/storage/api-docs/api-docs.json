@@ -86,8 +86,8 @@
                 "tags": [
                     "users"
                 ],
-                "summary": "Cria um usuário no sistema",
-                "description": "Cria um usuário na base de dados do sistema",
+                "summary": "Edita um usuário no sistema",
+                "description": "Edita um usuário na base de dados do sistema",
                 "operationId": "070e37fc9aff78ae73860751bc990ed3",
                 "parameters": [
                     {
@@ -128,7 +128,7 @@
                     }
                 },
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "Retorna o user criado",
                         "content": {
                             "application/json": {

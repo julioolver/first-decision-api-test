@@ -13,7 +13,7 @@ COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
 
 COPY ./src/ /var/www
 
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --optimize-autoloader
 
 FROM php:8.3-fpm-alpine
 
