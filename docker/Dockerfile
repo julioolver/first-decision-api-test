@@ -11,10 +11,9 @@ RUN apt-get update && apt-get install -y \
 
 COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
 
-
 COPY ./src/ /var/www
 
-RUN if [ -f composer.json ]; then composer install --no-dev --optimize-autoloader; fi
+RUN composer install --no-dev --optimize-autoloader
 
 FROM php:8.3-fpm-alpine
 
@@ -30,7 +29,6 @@ COPY --from=builder /var/www /var/www
 
 COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
 COPY ./docker/entrypoint.sh /entrypoint.sh
-
 
 RUN if [ ! -d /var/www/storage ]; then mkdir -p /var/www/storage; fi \
     && chown -R www-data:www-data /var/www \

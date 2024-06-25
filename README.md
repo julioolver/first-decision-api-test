@@ -9,11 +9,9 @@ O projeto utiliza um padrão de design com Services e Repositories para abstrair
 ## Tecnologias Utilizadas
 
 - **Laravel**: Framework PHP para construção de aplicações web.
-- **PHP**: Linguagem de programação utilizada.
+- **PHP**: Linguagem de programação utilizada versão 8.3.
 - **Docker**: Ferramenta de contêinerização.
 - **PostgreSQL**: Banco de dados utilizado.
-- **Vue 3**: Framework JavaScript para construção da interface.
-- **Vuetify**: Biblioteca de componentes UI para Vue.
 
 ## Pré-requisitos
 
@@ -42,6 +40,13 @@ Instruções para configurar e instalar o projeto:
 -   Fazer uma cópia do .env.exemple para .env
 
 ### Instalação
+
+Clone o repositório:
+
+    ```bash
+        git clone https://github.com/julioolver/first-decision-api-test.git
+        cd first-decision-api-test
+    ```
 
 Para emular o ambiente de desenvolvimento, foi utilizado o Docker e Docker-compose.
 
@@ -84,7 +89,7 @@ php artisan test
 
 Por se tratar de uma API REST, o Front-end foi desenvolvido em outro repositório, separando a responsabilidade de ambos:
 
-[Github Front-End](https://github.com/julioolver/first-decision-front-end-test)
+[Github front-End](https://github.com/julioolver/first-decision-front-end-test)
 
 
 ## TODO

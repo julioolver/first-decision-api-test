@@ -17,6 +17,11 @@ if [ ! -f composer.json ]; then
   php artisan key:generate
 fi
 
+if ! grep -q "^APP_KEY=" /var/www/.env; then
+    php artisan key:generate
+fi
+
+composer install --no-dev --optimize-autoloader
 php artisan migrate
 
 echo "Adjusting permissions for storage and bootstrap/cache"
