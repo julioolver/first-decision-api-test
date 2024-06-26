@@ -10,7 +10,7 @@ Adicionei uma regra, para fins de demonstração de onde a regra é implementada
 
 Além disso, foi criado um CI pelo github actions para que, quando tenha um merge/commit na branch main, seja executado o CI e executado os testes unitários da aplicação.
 
-[Representação CI Github Actions](images/ci-tests.png)
+![Representação CI Github Actions](images/ci-tests.png)
 
 ## Tecnologias Utilizadas
 
