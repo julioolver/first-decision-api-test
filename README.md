@@ -8,6 +8,7 @@ O projeto utiliza um padrão de design com Services e Repositories para abstrair
 
 Adicionei uma regra, para fins de demonstração de onde a regra é implementada na cada Services. A regra por si só não tem tanto sentido operacional, porém era apenas para demonstrra o uso da regra do negócio no código: Ao editar um usuário e optar por alterar a senha dele, deve-se informar a senha atual e a nova senha (em casos reais, essa regra seria válida caso o usuário estivesse alterando sua própria senha de autenticação), onde o back-end verifica se a senha atual digitada realmente é a senha cadastrada no banco de dados.
 
+Além disso, foi criado um CI pelo github actions para que, quando tenha um merge/commit na branch main, seja executado o CI e executado os testes unitários da aplicação.
 
 ## Tecnologias Utilizadas
 
