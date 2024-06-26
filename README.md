@@ -46,10 +46,10 @@ Instruções para configurar e instalar o projeto:
 
 Clone o repositório:
 
-    ```bash
-        git clone https://github.com/julioolver/first-decision-api-test.git
-        cd first-decision-api-test
-    ```
+```
+    git clone https://github.com/julioolver/first-decision-api-test.git
+    cd first-decision-api-test
+```
 
 Para emular o ambiente de desenvolvimento, foi utilizado o Docker e Docker-compose.
 
