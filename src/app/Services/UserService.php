@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Exceptions\UserNotFoundException;
 use App\Models\User;
 use App\Repositories\Contracts\UserRepositoryContract;
-use App\Repositories\Eloquent\UserRepository;
 use Illuminate\Database\Eloquent\Collection;
 
 class UserService
@@ -24,6 +23,10 @@ class UserService
 
     public function create(array $data): User
     {
+        if (!isset($data['password'])) {
+            throw new \InvalidArgumentException('Password is required.');
+        }
+        
         $data['password'] = bcrypt($data['password']);
 
         return $this->userRepository->create($data);

@@ -10,6 +10,8 @@ Adicionei uma regra, para fins de demonstração de onde a regra é implementada
 
 Além disso, foi criado um CI pelo github actions para que, quando tenha um merge/commit na branch main, seja executado o CI e executado os testes unitários da aplicação.
 
+[Representação CI Github Actions](images/ci-tests.png)
+
 ## Tecnologias Utilizadas
 
 - **Laravel**: Framework PHP para construção de aplicações web.
@@ -81,7 +83,7 @@ Acesse a seguinte URL para ter acesso a documentação:
 
 `http://localhost:8088/api/documentation/`
 
-![Swagger em funcionamento](swagger.png)
+![Swagger em funcionamento](images/swagger.png)
 
 ## Rodando os testes
 
@@ -95,7 +97,7 @@ Para rodar os testes criados, basta executar:
 php artisan test
 ```
 
-![Testes](test-phpunit.png)
+![Testes](images/test-phpunit.png)
 ## Front-end
 
 Por se tratar de uma API REST, o Front-end foi desenvolvido em outro repositório, separando a responsabilidade de ambos:
