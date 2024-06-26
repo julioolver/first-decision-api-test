@@ -6,6 +6,9 @@ Este projeto segue as melhores práticas de design e arquitetura de software, ap
 
 O projeto utiliza um padrão de design com Services e Repositories para abstrair a lógica de negócios e a camada de acesso a dados. Além disso, conta com FormRequest, Resource, Contacts/Interfaces e testes unitários e de feature.
 
+Adicionei uma regra, para fins de demonstração de onde a regra é implementada na cada Services. A regra por si só não tem tanto sentido operacional, porém era apenas para demonstrra o uso da regra do negócio no código: Ao editar um usuário e optar por alterar a senha dele, deve-se informar a senha atual e a nova senha (em casos reais, essa regra seria válida caso o usuário estivesse alterando sua própria senha de autenticação), onde o back-end verifica se a senha atual digitada realmente é a senha cadastrada no banco de dados.
+
+
 ## Tecnologias Utilizadas
 
 - **Laravel**: Framework PHP para construção de aplicações web.
